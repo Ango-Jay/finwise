@@ -4,22 +4,28 @@ import { Pagination, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import Img1 from "../assets/img/login-illustration-1.svg"
+import Img2 from "../assets/img/login-illustration-2.svg"
+import Img3 from "../assets/img/login-illustration-3.svg"
+import Img4 from "../assets/img/login-illustration-4.svg"
+
+
 
 const slides = [
   {
-    imgSrc: "src/assets/img/login-illustration-1.svg",
+    imgSrc: Img1,
     text: "Start your journey to financial growth today",
   },
   {
-    imgSrc: "src/assets/img/login-illustration-2.svg",
+    imgSrc: Img2,
     text: "Get your finances in order",
   },
   {
-    imgSrc: "src/assets/img/login-illustration-3.svg",
+    imgSrc: Img3,
     text: "Invest in your financial education",
   },
   {
-    imgSrc: "src/assets/img/login-illustration-4.svg",
+    imgSrc: Img4,
     text: "Set goals and crush 'em'",
   },
 ];

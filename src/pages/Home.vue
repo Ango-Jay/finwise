@@ -3,15 +3,20 @@ import { useAppStore } from "../store";
 import { storeToRefs } from "pinia";
 import ActionCard from "../components/Cards/ActionCard.vue";
 import ReportsChart from "../components/ReportsChart.vue";
+import DashImg from "../assets/img/stacked-steps.svg"
+
+
 
 const { user } = storeToRefs(useAppStore());
+const bgImage = `bg-[url(${DashImg})] `
 </script>
 
 <template>
   <div class="w-full px-6 sm:px-10 mt-[3rem]">
     <div
-      class="w-full h-[250px] flex flex-col bg-dark border-0 border-primary rounded-xl p-8 shadow bg-[url('src/assets/img/stacked-steps.svg')] bg-[50%] bg-right bg-no-repeat"
-    >
+      class="w-full h-[250px] flex flex-col bg-dark border-0 border-primary rounded-xl p-8 shadow bg-[50%] bg-right bg-no-repeat"
+   :class="bgImage"
+      >
       <h4 class="text-2xl text-light font-semibold">
         Hi <span class="text-primary">{{ user.firstname }}</span>
       </h4>

@@ -1,4 +1,7 @@
 <script setup>
+import PlusIcon from "../../assets/icon/plus-solid.svg"
+
+
 const props = defineProps({
   title: {
     type: String,
@@ -21,7 +24,7 @@ const props = defineProps({
         class="w-[40px] min-w-[50px] h-[50px] bg-backdrop rounded-full flex items-center justify-center btn-style"
       >
         <inline-svg
-          src="src/assets/icon/plus-solid.svg"
+          :src="PlusIcon"
           class="fill-light"
           width="20"
           height="20"

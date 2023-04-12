@@ -5,6 +5,10 @@ import { liveQuery } from "dexie";
 import { useObservable } from "@vueuse/rxjs";
 import { db } from "../services/db";
 import { watchEffect, ref } from "vue";
+import SearchIcon from "../assets/icon/magnifying-glass-solid.svg"
+import NotificationIcon from "../assets/icon/bell-solid.svg"
+import NavIcon from "../assets/icon/nav_burger.svg"
+
 
 const store = useAppStore();
 const { user, isMobile } = storeToRefs(store);
@@ -39,7 +43,7 @@ watchEffect(() => {
       @click="store.toggleMobile"
     >
       <inline-svg
-        src="src/assets/icon/nav_burger.svg"
+        :src="NavIcon"
         class="fill-light hover:fill-primary"
         width="30"
         height="30"
@@ -87,7 +91,7 @@ watchEffect(() => {
         />
         <div class="absolute top-[50%] translate-y-[-50%] left-[5px]">
           <inline-svg
-            src="src/assets/icon/magnifying-glass-solid.svg"
+            :src="SearchIcon"
             class="fill-light group-hover:fill-dark"
             width="20"
             height="20"
@@ -97,7 +101,7 @@ watchEffect(() => {
       </div>
       <div class="relative btn-style cursor-pointer ml-8">
         <inline-svg
-          src="src/assets/icon/bell-solid.svg"
+          :src="NotificationIcon"
           class="fill-light"
           width="20"
           height="20"

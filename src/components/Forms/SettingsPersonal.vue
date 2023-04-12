@@ -10,6 +10,10 @@ import Spinner from "../loader-utils/Spinner.vue";
 import { useRouter } from "vue-router";
 import { liveQuery } from "dexie";
 import { useObservable } from "@vueuse/rxjs";
+import UserIcon from "../../assets/icon/user-solid.svg"
+import EnvelopeIcon from "../../assets/icon/envelope-solid.svg"
+import UploadIcon from "../../assets/icon/cloud-arrow-up-solid.svg"
+
 
 const router = useRouter();
 const store = useAppStore();
@@ -127,7 +131,7 @@ const navigateToHome = () => {
       >
         <inline-svg
           v-if="!imageSrc"
-          src="src/assets/icon/user-solid.svg"
+          :src="UserIcon"
           class="fill-primary"
           width="50"
           height="50"
@@ -210,7 +214,7 @@ const navigateToHome = () => {
             v-model="state.email"
           />
           <inline-svg
-            src="src/assets/icon/envelope-solid.svg"
+            :src="EnvelopeIcon"
             class="fill-light absolute left-[10px] top-[50%] translate-y-[-50%]"
             width="20"
             height="20"
@@ -228,7 +232,7 @@ const navigateToHome = () => {
         >
           <inline-svg
             v-if="!profileImage.length"
-            src="src/assets/icon/user-solid.svg"
+    :src="UserIcon"
             class="fill-primary"
             width="25"
             height="25"
@@ -252,7 +256,7 @@ const navigateToHome = () => {
           v-model="profileImage"
         >
           <inline-svg
-            src="src/assets/icon/cloud-arrow-up-solid.svg"
+            :src="UploadIcon"
             class="fill-primary"
             width="35"
             height="35"

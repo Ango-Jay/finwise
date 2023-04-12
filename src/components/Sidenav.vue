@@ -3,6 +3,16 @@ import { useAppStore } from "../store";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 import { watchEffect, ref } from "vue";
+import Logo from "../assets/img/logo-main.png"
+import HomeImg from "../assets/icon/house-solid.svg"
+import BudgetImg from "../assets/icon/clipboard_list.svg"
+import TransactionsImg from "../assets/icon/paper-plane-solid.svg"
+import SubscriptionsImg from "../assets/icon/credit-card-solid.svg"
+import LoansImg from "../assets/icon/money-bill-wave-solid.svg"
+import SavingsImg from "../assets/icon/wallet-solid.svg"
+import LogoutIcon from "../assets/icon/logout.svg"
+import SettingsIcon from "../assets/icon/gear-solid.svg"
+import NavIcon from "../assets/icon/nav_burger.svg"
 
 const props = defineProps({
   active: String,
@@ -38,27 +48,27 @@ const handleLogout = () => {
 const sections = [
   {
     name: "home",
-    iconSrc: "src/assets/icon/house-solid.svg",
+    iconSrc: HomeImg,
   },
   {
     name: "budget",
-    iconSrc: "src/assets/icon/clipboard_list.svg",
+    iconSrc: BudgetImg,
   },
   {
     name: "transactions",
-    iconSrc: "src/assets/icon/paper-plane-solid.svg",
+    iconSrc: TransactionsImg,
   },
   {
     name: "subscriptions",
-    iconSrc: "src/assets/icon/credit-card-solid.svg",
+    iconSrc: SubscriptionsImg,
   },
   {
     name: "loans",
-    iconSrc: "src/assets/icon/money-bill-wave-solid.svg",
+    iconSrc: LoansImg,
   },
   {
     name: "savings",
-    iconSrc: "src/assets/icon/wallet-solid.svg",
+    iconSrc: SavingsImg,
   },
 ];
 </script>
@@ -73,7 +83,7 @@ const sections = [
         <div class="flex items-center mx-auto lg:mr-auto">
           <img
             className="w-[40px]  min-w-[40px]  h-[40px]  object-contain"
-            src="../assets/img/logo-main.png"
+            :src="Logo"
             alt="logo"
           />
           <h2 class="text-primary text-2xl font-semibold ml-2">FinWise</h2>
@@ -86,7 +96,7 @@ const sections = [
             @click="state.toggleMobile"
           >
             <inline-svg
-              src="src/assets/icon/nav_burger.svg"
+              :src="NavIcon"
               class="fill-light hover:fill-primary"
               width="30"
               height="30"
@@ -134,7 +144,7 @@ const sections = [
         >
           <span>
             <inline-svg
-              src="src/assets/icon/logout.svg"
+              :src="LogoutIcon"
               class="mr-4"
               width="18"
               height="18"
@@ -146,7 +156,7 @@ const sections = [
         </button>
         <RouterLink to="/settings">
           <inline-svg
-            src="src/assets/icon/gear-solid.svg"
+            :src="SettingsIcon"
             class="fill-light mr-4 hover:fill-primary"
             :class="{ 'fill-primary': isSettings }"
             width="20"

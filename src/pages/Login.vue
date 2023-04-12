@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, computed, watch } from "vue";
+import { reactive, ref, computed, watch, defineAsyncComponent } from "vue";
 import { liveQuery } from "dexie";
 import { useObservable } from "@vueuse/rxjs";
 import { db } from "../services/db";
@@ -8,10 +8,13 @@ import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, helpers } from "@vuelidate/validators";
 import { useSnackbar } from "vue3-snackbar";
 import { useAppStore } from "../store";
-import Slider from "../components/Slider.vue";
 import Spinner from "../components/loader-utils/Spinner.vue";
+import Logo from "../assets/img/logo-main.png"
+import Eye from "../assets/icon/password-eye.svg"
+import EyeSlash from "../assets/icon/eye-slash-solid.svg"
 
-// const Slider = defineAsyncComponent(()=>import("../components/Slider.vue"))
+
+const Slider = defineAsyncComponent(()=>import("../components/Slider.vue"))
 
 const appStore = useAppStore();
 const router = useRouter();
@@ -132,7 +135,7 @@ const handleLogin = async () => {
         >
           <img
             class="w-full h-full"
-            src="../assets/img/logo-main.png"
+            :src="Logo"
             alt="logo"
           />
         </div>
@@ -184,7 +187,7 @@ const handleLogin = async () => {
             class="absolute flex right-4 top-[63%] translate-y-[-50%] w-[25px] h-[20px] fill-light"
           >
             <inline-svg
-              src="src/assets/icon/password-eye.svg"
+              :src="Eye"
               v-if="!showPassword"
               class="text-light"
               width="20"
@@ -192,7 +195,7 @@ const handleLogin = async () => {
               aria-label="password show"
             ></inline-svg>
             <inline-svg
-              src="src/assets/icon/eye-slash-solid.svg"
+              :src="EyeSlash"
               v-if="showPassword"
               class="text-light"
               width="20"
