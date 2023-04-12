@@ -294,19 +294,21 @@ const submitForm = async () => {
               <div>{{ error.$message }}</div>
             </div>
             <div class="flex items-center mt-6 mb-4 text-light">
-                <div class="relative h-[25px] w-[25px]">
-              <input
-                type="checkbox"
-                class="absolute opacity-0 cursor-pointer w-full h-full relative z-[5] peer"
-                name="terms"
-              />
-              <span
-                class="absolute top-[50%] translate-y-[-50%] left-0 h-[25px] z-[2] w-[25px] bg-light hover:bg-light after:content-[''] after:absolute after:hidden after:left-[9px] after:top-[5px] after:w-[5px] after:h-[10px] after:border-solid after:border-white after:border-r-[2px] after:border-b-[2px] after:rotate-45  peer-checked:after:block  peer-checked:bg-primary"
-              ></span>
+              <div class="relative h-[25px] w-[25px]">
+                <input
+                  type="checkbox"
+                  class="absolute opacity-0 cursor-pointer w-full h-full relative z-[5] peer"
+                  name="terms"
+                />
+                <span
+                  class="absolute top-[50%] translate-y-[-50%] left-0 h-[25px] z-[2] w-[25px] bg-light hover:bg-light after:content-[''] after:absolute after:hidden after:left-[9px] after:top-[5px] after:w-[5px] after:h-[10px] after:border-solid after:border-white after:border-r-[2px] after:border-b-[2px] after:rotate-45 peer-checked:after:block peer-checked:bg-primary"
+                ></span>
               </div>
               <h4 class="ml-6">
                 I agree to the
-                <span class="text-primary cursor-pointer">terms and conditions</span>
+                <span class="text-primary cursor-pointer"
+                  >terms and conditions</span
+                >
               </h4>
             </div>
           </div>
@@ -320,11 +322,11 @@ const submitForm = async () => {
           </button>
           <!-- </form> -->
           <div class="text-light mt-8 text-center">
-          <p>
-            Already have an account?
-            <RouterLink to="/login" class="text-primary">Log in!</RouterLink>
-          </p>
-        </div>
+            <p>
+              Already have an account?
+              <RouterLink to="/login" class="text-primary">Log in!</RouterLink>
+            </p>
+          </div>
         </div>
       </div>
     </div>

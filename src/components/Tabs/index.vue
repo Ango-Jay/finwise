@@ -14,7 +14,7 @@ const activeTab = ref(1);
     <div class="w-full px-6 sm:px-10">
       <ul class="w-full" :class="customClass">
         <li
-          class="flex shrink-0 w-full xs:w-auto justify-center relative h-[3rem] "
+          class="flex shrink-0 w-full xs:w-auto justify-center relative h-[3rem]"
           :class="{ 'bg-dark': index + 1 === activeTab }"
           v-for="(tab, index) in tabList"
           :key="index"

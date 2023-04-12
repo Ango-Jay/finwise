@@ -14,7 +14,10 @@ const tabList = ["Profile", "Password"];
     </div> -->
     <h2 class="px-6 sm:px-10 text-primary text-2xl font-semibold">Settings</h2>
     <div class="w-full my-10">
-      <Tabs :tabList="tabList" customClass="text-light flex justify-between xs:justify-start xs:grid xs:grid-cols-2 overflow-auto xs:overflow-visible">
+      <Tabs
+        :tabList="tabList"
+        customClass="text-light flex justify-between xs:justify-start xs:grid xs:grid-cols-2 overflow-auto xs:overflow-visible"
+      >
         <template v-slot:tabPanel-1>
           <PersonalInformation />
         </template>

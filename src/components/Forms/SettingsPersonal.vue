@@ -11,12 +11,11 @@ import { useRouter } from "vue-router";
 import { liveQuery } from "dexie";
 import { useObservable } from "@vueuse/rxjs";
 
-
-const router = useRouter()
-const store = useAppStore()
-const { user} = storeToRefs(store);
+const router = useRouter();
+const store = useAppStore();
+const { user } = storeToRefs(store);
 const users = useObservable(liveQuery(() => db.users.toArray())) || [];
-const currentUser = ref({})
+const currentUser = ref({});
 
 const snackbar = useSnackbar();
 const state = reactive({
@@ -31,8 +30,8 @@ watchEffect(() => {
     state.email = user.value.email;
 
     currentUser.value = users.value?.find(
-          (item) => item?.uniqueId === user.value.id
-        );
+      (item) => item?.uniqueId === user.value.id
+    );
   }
 });
 const rules = {
@@ -47,78 +46,77 @@ const rules = {
   email: {
     required: helpers.withMessage("Please enter a valid email", required),
     email: helpers.withMessage("Please enter a valid email", email),
-  }
+  },
 };
 const v$ = useVuelidate(rules, state);
 const isSuccess = ref(false);
 const isLoading = ref(false);
 
 const profileImage = ref([]);
-const imageSrc = ref("")
+const imageSrc = ref("");
 
-
-watchEffect(()=>{
-  if(currentUser.value?.image && !profileImage.value.length ){
-profileImage.value = [currentUser.value.image]
+watchEffect(() => {
+  if (currentUser.value?.image && !profileImage.value.length) {
+    profileImage.value = [currentUser.value.image];
   }
-})
-watchEffect(()=>{
+});
+watchEffect(() => {
   if (profileImage.value.length > 0 && profileImage.value[0].file) {
     const image = URL.createObjectURL(profileImage.value[0].file);
-   imageSrc.value = image
+    imageSrc.value = image;
   }
   if (profileImage.value.length > 0 && !profileImage.value[0].file) {
     const image = URL.createObjectURL(profileImage.value[0]);
-   imageSrc.value = image
+    imageSrc.value = image;
   }
-})
+});
 
-const handleUpdate = async()=>{
+const handleUpdate = async () => {
   const isFormCorrect = await v$.value.$validate();
-  if(isFormCorrect){
+  if (isFormCorrect) {
     try {
-      isLoading.value = true
-      setTimeout(
-        async()=>{
+      isLoading.value = true;
+      setTimeout(async () => {
+        await db.users.update(user.value.id, {
+          firstname: state.firstname,
+          lastname: state.lastname,
+          email: state.email,
+          image:
+            profileImage.value.length && profileImage.value[0].file
+              ? profileImage.value[0].file
+              : currentUser.value.image,
+        });
 
-await db.users.update(user.value.id, {
-firstname: state.firstname,
-lastname: state.lastname,
-email: state.email,
-image: profileImage.value.length && profileImage.value[0].file ? profileImage.value[0].file : currentUser.value.image
-})
+        snackbar.add({
+          type: "success",
+          text: "Updated",
+        });
 
-snackbar.add({
-              type: "success",
-              text: "Updated",
-            });
-        
-            isLoading.value = false
-            isSuccess.value = true
-store.$patch((appState)=>{
-  appState.user = {
-                firstname: currentUser.value.firstname,
-                lastname: currentUser.value.lastname,
-                email: currentUser.value.email,
-                id: currentUser.value.uniqueId
-              }
-})
-        }, 3000
-      )
+        isLoading.value = false;
+        isSuccess.value = true;
+        store.$patch((appState) => {
+          appState.user = {
+            firstname: currentUser.value.firstname,
+            lastname: currentUser.value.lastname,
+            email: currentUser.value.email,
+            id: currentUser.value.uniqueId,
+          };
+        });
+      }, 3000);
     } catch (error) {
-      isLoading.value = false
+      isLoading.value = false;
       snackbar.add({
-            type: "error",
-            text: "Something went wrong",
-          });
+        type: "error",
+        text: "Something went wrong",
+      });
     }
   }
-}
-const navigateToHome = ()=>{
+};
+const navigateToHome = () => {
   router.push({
-              name: "home",
-            });
-}
+    name: "home",
+  });
+};
 </script>
 
 <template>
@@ -128,14 +126,19 @@ const navigateToHome = ()=>{
         class="w-[100px] h-[100px] mb-4 sm:mb-0 rounded-full border border-primary bg-dark flex items-center justify-center"
       >
         <inline-svg
-        v-if="!imageSrc"
+          v-if="!imageSrc"
           src="src/assets/icon/user-solid.svg"
           class="fill-primary"
           width="50"
           height="50"
           aria-label="user"
         ></inline-svg>
-        <img v-if="imageSrc" class="w-full h-full object-cover rounded-full" :src="imageSrc" alt="user">
+        <img
+          v-if="imageSrc"
+          class="w-full h-full object-cover rounded-full"
+          :src="imageSrc"
+          alt="user"
+        />
       </div>
       <div class="text-light text-lg capitalise sm:ml-4 font-semibold">
         <h4>
@@ -152,17 +155,15 @@ const navigateToHome = ()=>{
     <div class="hidden md:flex ml-auto items-center text-sm">
       <button
         class="border border-primary bg-light text-primary p-3 rounded-xl min-w-[100px] btn-style"
-      @click="navigateToHome"
-        >
+        @click="navigateToHome"
+      >
         Cancel
       </button>
       <button
         class="bg-primary text-light p-3 rounded-xl min-w-[100px] ml-4 btn-style flex justify-center items-center"
-      @click="handleUpdate"
-        >
-      <Spinner
-      :isLoading="isLoading"
-      />
+        @click="handleUpdate"
+      >
+        <Spinner :isLoading="isLoading" />
         Save
       </button>
     </div>
@@ -223,7 +224,7 @@ const navigateToHome = ()=>{
     <div class="w-full mb-8">
       <div class="flex flex-col sm:flex-row">
         <div
-          class="shrink-0 w-[50px] min-w-[50px] h-[50px]  border border-primary rounded-full mb-4 sm:mb-0 ml-auto sm:ml-0 mr-auto sm:mr-4 flex items-center justify-center bg-dark"
+          class="shrink-0 w-[50px] min-w-[50px] h-[50px] border border-primary rounded-full mb-4 sm:mb-0 ml-auto sm:ml-0 mr-auto sm:mr-4 flex items-center justify-center bg-dark"
         >
           <inline-svg
             v-if="!profileImage.length"
@@ -233,7 +234,12 @@ const navigateToHome = ()=>{
             height="25"
             aria-label="user"
           ></inline-svg>
-          <img :src="imageSrc" class="w-full h-full object-cover rounded-full" v-if="profileImage.length > 0" alt="user" />
+          <img
+            :src="imageSrc"
+            class="w-full h-full object-cover rounded-full"
+            v-if="profileImage.length > 0"
+            alt="user"
+          />
         </div>
 
         <file-upload
@@ -260,20 +266,20 @@ const navigateToHome = ()=>{
       </div>
       <div class="w-full mt-8 border-t border-primary"></div>
     </div>
-    <div class="flex flex-col-reverse sm:flex-row  md:hidden ml-auto items-center text-sm">
+    <div
+      class="flex flex-col-reverse sm:flex-row md:hidden ml-auto items-center text-sm"
+    >
       <button
         class="border border-primary bg-light text-primary p-3 rounded-xl min-w-full sm:min-w-[100px] btn-style"
-      @click="navigateToHome"
-        >
+        @click="navigateToHome"
+      >
         Cancel
       </button>
       <button
         class="bg-primary text-light p-3 rounded-xl min-w-full sm:min-w-[100px] ml-0 sm:ml-4 mb-4 sm:mb-0 btn-style flex justify-center items-center"
-      @click="handleUpdate"
-        >
-      <Spinner
-      :isLoading="isLoading"
-      />
+        @click="handleUpdate"
+      >
+        <Spinner :isLoading="isLoading" />
         Save
       </button>
     </div>

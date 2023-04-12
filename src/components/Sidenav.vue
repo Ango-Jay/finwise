@@ -26,10 +26,10 @@ const toggleIsMobile = () => {
   state.$patch({ isMobile: !isMobile });
 };
 const handleLogout = () => {
-  state.$patch((store)=>{
-    store.isAuth = false
-    store.isMobile = false
-    store.user = {}
+  state.$patch((store) => {
+    store.isAuth = false;
+    store.isMobile = false;
+    store.user = {};
   });
   router.push({
     name: "login",
@@ -70,27 +70,29 @@ const sections = [
   >
     <div class="w-full h-full min-h-[100vh] flex flex-col">
       <div className="mt-6 w-full flex items-center relative">
-        <div class="flex  items-center mx-auto lg:mr-auto">
+        <div class="flex items-center mx-auto lg:mr-auto">
           <img
             className="w-[40px]  min-w-[40px]  h-[40px]  object-contain"
             src="../assets/img/logo-main.png"
             alt="logo"
           />
-          <h2 class="text-primary text-2xl font-semibold ml-2 ">FinWise</h2>
+          <h2 class="text-primary text-2xl font-semibold ml-2">FinWise</h2>
         </div>
-        <div className="w-[30px] min-w-[30px] h-[30px] absolute top-[0.8rem] right-0 mr-4 flex lg:hidden">
+        <div
+          className="w-[30px] min-w-[30px] h-[30px] absolute top-[0.8rem] right-0 mr-4 flex lg:hidden"
+        >
           <button
-  class="w-[30px] min-w-[30px] h-[30px] flex lg:hidden mr-10"
-  @click="state.toggleMobile"
-  >
-  <inline-svg
-            src="src/assets/icon/nav_burger.svg"
-            class="fill-light hover:fill-primary"
-            width="30"
-            height="30"
-            aria-label="nav"
-          ></inline-svg>
-  </button>
+            class="w-[30px] min-w-[30px] h-[30px] flex lg:hidden mr-10"
+            @click="state.toggleMobile"
+          >
+            <inline-svg
+              src="src/assets/icon/nav_burger.svg"
+              class="fill-light hover:fill-primary"
+              width="30"
+              height="30"
+              aria-label="nav"
+            ></inline-svg>
+          </button>
         </div>
       </div>
 
@@ -116,9 +118,9 @@ const sections = [
               {{ section.name }}
             </span>
           </RouterLink>
-          <div          
+          <div
             class="absolute w-full h-[50px] top-0 left-0 px-6 z-[4] bg-primary rounded-2xl opacity-0 group-hover:opacity-100 hover:opacity-100"
-            :class="{'opacity-100': props.active === section.name}"
+            :class="{ 'opacity-100': props.active === section.name }"
           ></div>
         </div>
       </div>

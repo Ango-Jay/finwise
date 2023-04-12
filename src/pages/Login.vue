@@ -75,7 +75,7 @@ const handleLogin = async () => {
                 firstname: currentUser.firstname,
                 lastname: currentUser.lastname,
                 email: currentUser.email,
-                id: currentUser.uniqueId
+                id: currentUser.uniqueId,
               };
             });
             snackbar.add({
@@ -127,7 +127,9 @@ const handleLogin = async () => {
       class="flex flex-col items-center justify-center w-full lg:w-[50%] pt-[5rem] px-6 sm:px-8"
     >
       <div class="flex items-center mb-4">
-        <div class="w-full flex justify-center items-center w-[40px] min-w-[40px] h-[40px]">
+        <div
+          class="w-full flex justify-center items-center w-[40px] min-w-[40px] h-[40px]"
+        >
           <img
             class="w-full h-full"
             src="../assets/img/logo-main.png"
@@ -136,10 +138,14 @@ const handleLogin = async () => {
         </div>
         <h2 class="text-primary text-2xl font-semibold ml-2">FinWise</h2>
       </div>
-      <h4 class="text-sm sm:text-base text-light">Making money management a breeze.</h4>
+      <h4 class="text-sm sm:text-base text-light">
+        Making money management a breeze.
+      </h4>
 
       <div class="text-white text-left w-full mt-[4rem] sm:w-[400px]">
-        <h1 class="text-[32px] font-semibold text-center sm:text-left">Welcome back&excl;</h1>
+        <h1 class="text-[32px] font-semibold text-center sm:text-left">
+          Welcome back&excl;
+        </h1>
         <div class="border-t-3 border-primary w-[200px] rounded-lg"></div>
       </div>
 
@@ -200,9 +206,7 @@ const handleLogin = async () => {
           @click="handleLogin"
           class="flex justify-center items-center py-4 bg-primary text-white font-semibold w-full rounded-2xl mt-8"
         >
-        <Spinner 
-        :isLoading="isLoading"
-        />
+          <Spinner :isLoading="isLoading" />
           Login
         </button>
         <div class="text-light mt-8 text-center">

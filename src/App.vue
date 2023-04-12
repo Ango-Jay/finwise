@@ -26,12 +26,15 @@ watchEffect(() => {
       :class="{ 'lg:ml-auto lg:w-[75%] xl:w-[82%]': isAuth }"
     >
       <AppHeader v-if="isAuth" />
-      <div 
-      class="w-full"
-      :class="{'lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1440px] mx-auto': isAuth}"
+      <div
+        class="w-full"
+        :class="{
+          'lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1440px] mx-auto':
+            isAuth,
+        }"
       >
-      <router-view></router-view>
-    </div>
+        <router-view></router-view>
+      </div>
     </div>
   </div>
   <vue3-snackbar top right :duration="4000"></vue3-snackbar>
