@@ -10,10 +10,9 @@ import Spinner from "../loader-utils/Spinner.vue";
 import { useRouter } from "vue-router";
 import { liveQuery } from "dexie";
 import { useObservable } from "@vueuse/rxjs";
-import UserIcon from "../../assets/icon/user-solid.svg"
-import EnvelopeIcon from "../../assets/icon/envelope-solid.svg"
-import UploadIcon from "../../assets/icon/cloud-arrow-up-solid.svg"
-
+import UserIcon from "../../assets/icon/user-solid.svg";
+import EnvelopeIcon from "../../assets/icon/envelope-solid.svg";
+import UploadIcon from "../../assets/icon/cloud-arrow-up-solid.svg";
 
 const router = useRouter();
 const store = useAppStore();
@@ -232,7 +231,7 @@ const navigateToHome = () => {
         >
           <inline-svg
             v-if="!profileImage.length"
-    :src="UserIcon"
+            :src="UserIcon"
             class="fill-primary"
             width="25"
             height="25"

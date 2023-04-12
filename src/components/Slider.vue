@@ -4,12 +4,10 @@ import { Pagination, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import Img1 from "../assets/img/login-illustration-1.svg"
-import Img2 from "../assets/img/login-illustration-2.svg"
-import Img3 from "../assets/img/login-illustration-3.svg"
-import Img4 from "../assets/img/login-illustration-4.svg"
-
-
+import Img1 from "../assets/img/login-illustration-1.svg";
+import Img2 from "../assets/img/login-illustration-2.svg";
+import Img3 from "../assets/img/login-illustration-3.svg";
+import Img4 from "../assets/img/login-illustration-4.svg";
 
 const slides = [
   {

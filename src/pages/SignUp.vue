@@ -6,9 +6,9 @@ import { db } from "../services/db";
 import { useRouter } from "vue-router";
 import { useSnackbar } from "vue3-snackbar";
 import Spinner from "../components/loader-utils/Spinner.vue";
-import Logo from "../assets/img/logo-main.png"
-import Eye from "../assets/icon/password-eye.svg"
-import EyeSlash from "../assets/icon/eye-slash-solid.svg"
+import Logo from "../assets/img/logo-main.png";
+import Eye from "../assets/icon/password-eye.svg";
+import EyeSlash from "../assets/icon/eye-slash-solid.svg";
 const Slider = defineAsyncComponent(() => import("../components/Slider.vue"));
 
 const router = useRouter();
@@ -20,7 +20,7 @@ const state = reactive({
   password: "",
   confirmPassword: "",
 });
-const isTerms = ref(false)
+const isTerms = ref(false);
 const valueIsSameAs = (value) => {
   return value === state.password;
 };
@@ -125,7 +125,7 @@ const submitForm = async () => {
           >
             <img
               class="w-full h-full rounded-full object-contain"
-            :src="Logo"
+              :src="Logo"
               alt="logo"
             />
           </div>
@@ -228,7 +228,7 @@ const submitForm = async () => {
                 class="absolute flex right-4 top-[50%] translate-y-[-50%] w-[25px] h-[20px] fill-light"
               >
                 <inline-svg
-              :src="Eye"
+                  :src="Eye"
                   v-if="!showPassword"
                   class="text-light"
                   width="20"
@@ -236,7 +236,7 @@ const submitForm = async () => {
                   aria-label="password show"
                 ></inline-svg>
                 <inline-svg
-             :src="EyeSlash"
+                  :src="EyeSlash"
                   v-if="showPassword"
                   class="text-light"
                   width="20"
@@ -280,7 +280,7 @@ const submitForm = async () => {
                   aria-label="password show"
                 ></inline-svg>
                 <inline-svg
-                :src="EyeSlash"
+                  :src="EyeSlash"
                   v-if="showConfirmPassword"
                   class="text-light"
                   width="20"

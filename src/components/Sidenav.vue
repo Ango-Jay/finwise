@@ -3,16 +3,16 @@ import { useAppStore } from "../store";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 import { watchEffect, ref } from "vue";
-import Logo from "../assets/img/logo-main.png"
-import HomeImg from "../assets/icon/house-solid.svg"
-import BudgetImg from "../assets/icon/clipboard_list.svg"
-import TransactionsImg from "../assets/icon/paper-plane-solid.svg"
-import SubscriptionsImg from "../assets/icon/credit-card-solid.svg"
-import LoansImg from "../assets/icon/money-bill-wave-solid.svg"
-import SavingsImg from "../assets/icon/wallet-solid.svg"
-import LogoutIcon from "../assets/icon/logout.svg"
-import SettingsIcon from "../assets/icon/gear-solid.svg"
-import NavIcon from "../assets/icon/nav_burger.svg"
+import Logo from "../assets/img/logo-main.png";
+import HomeImg from "../assets/icon/house-solid.svg";
+import BudgetImg from "../assets/icon/clipboard_list.svg";
+import TransactionsImg from "../assets/icon/paper-plane-solid.svg";
+import SubscriptionsImg from "../assets/icon/credit-card-solid.svg";
+import LoansImg from "../assets/icon/money-bill-wave-solid.svg";
+import SavingsImg from "../assets/icon/wallet-solid.svg";
+import LogoutIcon from "../assets/icon/logout.svg";
+import SettingsIcon from "../assets/icon/gear-solid.svg";
+import NavIcon from "../assets/icon/nav_burger.svg";
 
 const props = defineProps({
   active: String,

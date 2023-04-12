@@ -5,10 +5,9 @@ import { liveQuery } from "dexie";
 import { useObservable } from "@vueuse/rxjs";
 import { db } from "../services/db";
 import { watchEffect, ref } from "vue";
-import SearchIcon from "../assets/icon/magnifying-glass-solid.svg"
-import NotificationIcon from "../assets/icon/bell-solid.svg"
-import NavIcon from "../assets/icon/nav_burger.svg"
-
+import SearchIcon from "../assets/icon/magnifying-glass-solid.svg";
+import NotificationIcon from "../assets/icon/bell-solid.svg";
+import NavIcon from "../assets/icon/nav_burger.svg";
 
 const store = useAppStore();
 const { user, isMobile } = storeToRefs(store);

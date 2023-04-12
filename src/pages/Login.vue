@@ -9,12 +9,11 @@ import { required, email, minLength, helpers } from "@vuelidate/validators";
 import { useSnackbar } from "vue3-snackbar";
 import { useAppStore } from "../store";
 import Spinner from "../components/loader-utils/Spinner.vue";
-import Logo from "../assets/img/logo-main.png"
-import Eye from "../assets/icon/password-eye.svg"
-import EyeSlash from "../assets/icon/eye-slash-solid.svg"
+import Logo from "../assets/img/logo-main.png";
+import Eye from "../assets/icon/password-eye.svg";
+import EyeSlash from "../assets/icon/eye-slash-solid.svg";
 
-
-const Slider = defineAsyncComponent(()=>import("../components/Slider.vue"))
+const Slider = defineAsyncComponent(() => import("../components/Slider.vue"));
 
 const appStore = useAppStore();
 const router = useRouter();
@@ -133,11 +132,7 @@ const handleLogin = async () => {
         <div
           class="w-full flex justify-center items-center w-[40px] min-w-[40px] h-[40px]"
         >
-          <img
-            class="w-full h-full"
-            :src="Logo"
-            alt="logo"
-          />
+          <img class="w-full h-full" :src="Logo" alt="logo" />
         </div>
         <h2 class="text-primary text-2xl font-semibold ml-2">FinWise</h2>
       </div>

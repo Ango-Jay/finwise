@@ -9,8 +9,8 @@ import { useSnackbar } from "vue3-snackbar";
 import { useVuelidate } from "@vuelidate/core";
 import { required, helpers, minLength } from "@vuelidate/validators";
 import Spinner from "../../components/loader-utils/Spinner.vue";
-import EyeIcon from "../../assets/icon/password-eye.svg"
-import EyeSlashIcon from "../../assets/icon/eye-slash-solid.svg"
+import EyeIcon from "../../assets/icon/password-eye.svg";
+import EyeSlashIcon from "../../assets/icon/eye-slash-solid.svg";
 
 const { user } = storeToRefs(useAppStore());
 const snackbar = useSnackbar();
@@ -162,7 +162,7 @@ const handleChangePassword = async () => {
               aria-label="password show"
             ></inline-svg>
             <inline-svg
-            :src="EyeSlashIcon"
+              :src="EyeSlashIcon"
               v-if="showPassword.currentPassword"
               class="text-light"
               width="20"
@@ -199,7 +199,7 @@ const handleChangePassword = async () => {
             class="absolute flex right-4 top-[50%] translate-y-[-50%] w-[25px] h-[20px] fill-light"
           >
             <inline-svg
-      :src="EyeIcon"
+              :src="EyeIcon"
               v-if="!showPassword.newPassword"
               class="text-light"
               width="20"
@@ -207,7 +207,7 @@ const handleChangePassword = async () => {
               aria-label="password show"
             ></inline-svg>
             <inline-svg
-            :src="EyeSlashIcon"
+              :src="EyeSlashIcon"
               v-if="showPassword.newPassword"
               class="text-light"
               width="20"
@@ -248,7 +248,7 @@ const handleChangePassword = async () => {
             class="absolute flex right-4 top-[50%] translate-y-[-50%] w-[25px] h-[20px] fill-light"
           >
             <inline-svg
-            :src="EyeIcon"
+              :src="EyeIcon"
               v-if="!showPassword.confirmPassword"
               class="text-light"
               width="20"

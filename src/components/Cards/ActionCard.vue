@@ -1,6 +1,5 @@
 <script setup>
-import PlusIcon from "../../assets/icon/plus-solid.svg"
-
+import PlusIcon from "../../assets/icon/plus-solid.svg";
 
 const props = defineProps({
   title: {
