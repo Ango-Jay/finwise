@@ -227,7 +227,7 @@ const handleLogin = async () => {
         </button>
         <div class="text-light mt-8 text-center">
           <p>
-            Dont&apos;t have an account?
+            Don&apos;t have an account?
             <RouterLink to="/signup" class="text-primary">Sign up!</RouterLink>
           </p>
         </div>
