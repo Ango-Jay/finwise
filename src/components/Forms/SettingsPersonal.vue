@@ -1,7 +1,7 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { useAppStore } from "../../store";
-import { reactive, watchEffect, ref } from "vue";
+import { reactive, watchEffect, ref, computed } from "vue";
 import { db } from "../../services/db";
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, helpers } from "@vuelidate/validators";
@@ -26,6 +26,7 @@ const state = reactive({
   lastname: "",
   email: "",
 });
+const mainImgSrc = ref("")
 watchEffect(() => {
   if (Object.keys(user).length) {
     state.firstname = user.value.firstname;
@@ -37,20 +38,27 @@ watchEffect(() => {
     );
   }
 });
-const rules = {
+const rules = computed(()=>{
+  return(
+    {
   firstname: {
     required: helpers.withMessage("Please enter a name", required),
     min: helpers.withMessage("Please enter a valid name", minLength(3)),
+    $autoDirty: true
   },
   lastname: {
     required: helpers.withMessage("Please enter a name", required),
     min: helpers.withMessage("Please enter a valid name", minLength(3)),
+    $autoDirty: true
   },
   email: {
     required: helpers.withMessage("Please enter a valid email", required),
     email: helpers.withMessage("Please enter a valid email", email),
+    $autoDirty: true
   },
-};
+}
+  )
+});
 const v$ = useVuelidate(rules, state);
 const isSuccess = ref(false);
 const isLoading = ref(false);
@@ -59,8 +67,14 @@ const profileImage = ref([]);
 const imageSrc = ref("");
 
 watchEffect(() => {
+  if(currentUser.value?.image){
+    console.log("YTROERKJTG");
+    mainImgSrc.value = URL.createObjectURL(currentUser.value.image);
+  }
   if (currentUser.value?.image && !profileImage.value.length) {
+
     profileImage.value = [currentUser.value.image];
+
   }
 });
 watchEffect(() => {
@@ -129,7 +143,7 @@ const navigateToHome = () => {
         class="w-[100px] h-[100px] mb-4 sm:mb-0 rounded-full border border-primary bg-dark flex items-center justify-center"
       >
         <inline-svg
-          v-if="!imageSrc"
+          v-if="!mainImgSrc"
           :src="UserIcon"
           class="fill-primary"
           width="50"
@@ -137,9 +151,9 @@ const navigateToHome = () => {
           aria-label="user"
         ></inline-svg>
         <img
-          v-if="imageSrc"
+          v-if="mainImgSrc"
           class="w-full h-full object-cover rounded-full"
-          :src="imageSrc"
+          :src="mainImgSrc"
           alt="user"
         />
       </div>
@@ -174,7 +188,7 @@ const navigateToHome = () => {
 
   <div class="w-full px-6 sm:px-10 mt-[3rem]">
     <div class="w-full mb-8">
-      <div class="w-full flex flex-col md:flex-row md:items-center">
+      <div class="w-full flex flex-col md:flex-row md:items-start">
         <div class="flex flex-col w-full md:w-[50%] md:mr-4 mb-4 md:mb-0">
           <label class="text-primary font-bold mb-2 text-[13px]" for="firstname"
             >First name</label
@@ -185,6 +199,13 @@ const navigateToHome = () => {
             type="text"
             v-model="state.firstname"
           />
+          <div
+              class="text-red-500 text-[13px]"
+              v-for="error of v$.firstname.$errors"
+              :key="error.$uid"
+            >
+              <div>{{ error.$message }}</div>
+            </div>
         </div>
         <div class="flex flex-col w-full md:w-[50%] md:ml-4">
           <label class="text-primary font-bold mb-2 text-[13px]" for="lastname"
@@ -196,6 +217,13 @@ const navigateToHome = () => {
             type="text"
             v-model="state.lastname"
           />
+          <div
+              class="text-red-500 text-[13px]"
+              v-for="error of v$.lastname.$errors"
+              :key="error.$uid"
+            >
+              <div>{{ error.$message }}</div>
+            </div>
         </div>
       </div>
       <div class="w-full mt-8 border-t border-primary"></div>
@@ -212,6 +240,13 @@ const navigateToHome = () => {
             type="text"
             v-model="state.email"
           />
+          <div
+              class="text-red-500 text-[13px]"
+              v-for="error of v$.email.$errors"
+              :key="error.$uid"
+            >
+              <div>{{ error.$message }}</div>
+            </div>
           <inline-svg
             :src="EnvelopeIcon"
             class="fill-light absolute left-[10px] top-[50%] translate-y-[-50%]"

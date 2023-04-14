@@ -28,10 +28,13 @@ const clearForm = () => {
   state.email = "";
   state.password = "";
 };
-const rules = {
+const rules = computed(()=>{
+  return(
+    {
   email: {
     required: helpers.withMessage("Please enter a valid email", required),
     email: helpers.withMessage("Please enter a valid email", email),
+    $autoDirty: true
   },
   password: {
     required: helpers.withMessage("Please enter a password", required),
@@ -39,8 +42,11 @@ const rules = {
       "Password cannot be less than eight characters",
       minLength(8)
     ),
+    $autoDirty: true
   },
-};
+}
+  )
+});
 const v$ = useVuelidate(rules, state);
 const isSuccess = ref(false);
 const isLoading = ref(false);
@@ -160,6 +166,13 @@ const handleLogin = async () => {
             type="email"
             v-model="state.email"
           />
+          <div
+              class="text-red-500 text-[13px]"
+              v-for="error of v$.email.$errors"
+              :key="error.$uid"
+            >
+              <div>{{ error.$message }}</div>
+            </div>
         </div>
         <div class="my-4 flex flex-col relative">
           <label
@@ -176,6 +189,13 @@ const handleLogin = async () => {
             :type="togglePasswordInputType"
             v-model="state.password"
           />
+          <div
+              class="text-red-500 text-[13px]"
+              v-for="error of v$.password.$errors"
+              :key="error.$uid"
+            >
+              <div>{{ error.$message }}</div>
+            </div>
           <button
             type="button"
             @click="showPassword = !showPassword"

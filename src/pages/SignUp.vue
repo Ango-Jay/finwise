@@ -19,23 +19,32 @@ const state = reactive({
   email: "",
   password: "",
   confirmPassword: "",
+  isTerms: false
 });
-const isTerms = ref(false);
+
 const valueIsSameAs = (value) => {
   return value === state.password;
 };
-const rules = {
+const mustBeTrue = (value) => {
+  return value === true;
+};
+const rules = computed(()=>{
+  return(
+    {
   firstname: {
     required: helpers.withMessage("Please enter a name", required),
     min: helpers.withMessage("Please enter a valid name", minLength(3)),
+    $autoDirty: true
   },
   lastname: {
     required: helpers.withMessage("Please enter a name", required),
     min: helpers.withMessage("Please enter a valid name", minLength(3)),
+    $autoDirty: true
   },
   email: {
     required: helpers.withMessage("Please enter a valid email", required),
     email: helpers.withMessage("Please enter a valid email", email),
+    $autoDirty: true
   },
   password: {
     required: helpers.withMessage("Please enter a password", required),
@@ -43,6 +52,7 @@ const rules = {
       "Password cannot be less than eight characters",
       minLength(8)
     ),
+    $autoDirty: true
   },
   confirmPassword: {
     required: helpers.withMessage("Please confirm password", required),
@@ -51,8 +61,14 @@ const rules = {
       minLength(8)
     ),
     sameAs: helpers.withMessage("Passwords do not match", valueIsSameAs),
+    $autoDirty: true
   },
-};
+  isTerms:{
+    mustBeTrue: helpers.withMessage("Please accept the terms", mustBeTrue),
+  }
+}
+  )
+});
 const v$ = useVuelidate(rules, state);
 
 const showPassword = ref(false);
@@ -302,6 +318,7 @@ const submitForm = async () => {
                   type="checkbox"
                   class="absolute opacity-0 cursor-pointer w-full h-full relative z-[5] peer"
                   name="terms"
+                  v-model="state.isTerms"
                 />
                 <span
                   class="absolute top-[50%] translate-y-[-50%] left-0 h-[25px] z-[2] w-[25px] bg-light hover:bg-light after:content-[''] after:absolute after:hidden after:left-[9px] after:top-[5px] after:w-[5px] after:h-[10px] after:border-solid after:border-white after:border-r-[2px] after:border-b-[2px] after:rotate-45 peer-checked:after:block peer-checked:bg-primary"
@@ -313,7 +330,16 @@ const submitForm = async () => {
                   >terms and conditions</span
                 >
               </h4>
+          
             </div>
+            <div
+              class="text-red-500 text-[13px]"
+              v-for="error of v$.isTerms.$errors"
+              :key="error.$uid"
+            >
+              <div>{{ error.$message }}</div>
+            </div>
+           
           </div>
           <button
             @click="submitForm"
