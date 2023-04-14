@@ -26,7 +26,7 @@ const state = reactive({
   lastname: "",
   email: "",
 });
-const mainImgSrc = ref("")
+const mainImgSrc = ref("");
 watchEffect(() => {
   if (Object.keys(user).length) {
     state.firstname = user.value.firstname;
@@ -38,26 +38,24 @@ watchEffect(() => {
     );
   }
 });
-const rules = computed(()=>{
-  return(
-    {
-  firstname: {
-    required: helpers.withMessage("Please enter a name", required),
-    min: helpers.withMessage("Please enter a valid name", minLength(3)),
-    $autoDirty: true
-  },
-  lastname: {
-    required: helpers.withMessage("Please enter a name", required),
-    min: helpers.withMessage("Please enter a valid name", minLength(3)),
-    $autoDirty: true
-  },
-  email: {
-    required: helpers.withMessage("Please enter a valid email", required),
-    email: helpers.withMessage("Please enter a valid email", email),
-    $autoDirty: true
-  },
-}
-  )
+const rules = computed(() => {
+  return {
+    firstname: {
+      required: helpers.withMessage("Please enter a name", required),
+      min: helpers.withMessage("Please enter a valid name", minLength(3)),
+      $autoDirty: true,
+    },
+    lastname: {
+      required: helpers.withMessage("Please enter a name", required),
+      min: helpers.withMessage("Please enter a valid name", minLength(3)),
+      $autoDirty: true,
+    },
+    email: {
+      required: helpers.withMessage("Please enter a valid email", required),
+      email: helpers.withMessage("Please enter a valid email", email),
+      $autoDirty: true,
+    },
+  };
 });
 const v$ = useVuelidate(rules, state);
 const isSuccess = ref(false);
@@ -67,14 +65,12 @@ const profileImage = ref([]);
 const imageSrc = ref("");
 
 watchEffect(() => {
-  if(currentUser.value?.image){
+  if (currentUser.value?.image) {
     console.log("YTROERKJTG");
     mainImgSrc.value = URL.createObjectURL(currentUser.value.image);
   }
   if (currentUser.value?.image && !profileImage.value.length) {
-
     profileImage.value = [currentUser.value.image];
-
   }
 });
 watchEffect(() => {
@@ -200,12 +196,12 @@ const navigateToHome = () => {
             v-model="state.firstname"
           />
           <div
-              class="text-red-500 text-[13px]"
-              v-for="error of v$.firstname.$errors"
-              :key="error.$uid"
-            >
-              <div>{{ error.$message }}</div>
-            </div>
+            class="text-red-500 text-[13px]"
+            v-for="error of v$.firstname.$errors"
+            :key="error.$uid"
+          >
+            <div>{{ error.$message }}</div>
+          </div>
         </div>
         <div class="flex flex-col w-full md:w-[50%] md:ml-4">
           <label class="text-primary font-bold mb-2 text-[13px]" for="lastname"
@@ -218,12 +214,12 @@ const navigateToHome = () => {
             v-model="state.lastname"
           />
           <div
-              class="text-red-500 text-[13px]"
-              v-for="error of v$.lastname.$errors"
-              :key="error.$uid"
-            >
-              <div>{{ error.$message }}</div>
-            </div>
+            class="text-red-500 text-[13px]"
+            v-for="error of v$.lastname.$errors"
+            :key="error.$uid"
+          >
+            <div>{{ error.$message }}</div>
+          </div>
         </div>
       </div>
       <div class="w-full mt-8 border-t border-primary"></div>
@@ -241,12 +237,12 @@ const navigateToHome = () => {
             v-model="state.email"
           />
           <div
-              class="text-red-500 text-[13px]"
-              v-for="error of v$.email.$errors"
-              :key="error.$uid"
-            >
-              <div>{{ error.$message }}</div>
-            </div>
+            class="text-red-500 text-[13px]"
+            v-for="error of v$.email.$errors"
+            :key="error.$uid"
+          >
+            <div>{{ error.$message }}</div>
+          </div>
           <inline-svg
             :src="EnvelopeIcon"
             class="fill-light absolute left-[10px] top-[50%] translate-y-[-50%]"

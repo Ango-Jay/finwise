@@ -32,40 +32,38 @@ const mustNotEqual = (value) => {
   return value !== state.currentPassword;
 };
 
-const rules = computed(()=>{
-  return(
-    {
-  currentPassword: {
-    required: helpers.withMessage("Please enter a password", required),
-    min: helpers.withMessage(
-      "Password cannot be less than eight characters",
-      minLength(8)
-    ),
-    $autoDirty: true
-  },
-  newPassword: {
-    required: helpers.withMessage("Please enter a password", required),
-    min: helpers.withMessage(
-      "Password cannot be less than eight characters",
-      minLength(8)
-    ),
-    mustNotEqual: helpers.withMessage(
-      "Old and New password cannot be the same",
-      mustNotEqual
-    ),
-    $autoDirty: true
-  },
-  confirmPassword: {
-    required: helpers.withMessage("Please confirm password", required),
-    min: helpers.withMessage(
-      "Password cannot be less than eight characters",
-      minLength(8)
-    ),
-    sameAs: helpers.withMessage("Passwords do not match", valueIsSameAs),
-    $autoDirty: true
-  },
-}
-  )
+const rules = computed(() => {
+  return {
+    currentPassword: {
+      required: helpers.withMessage("Please enter a password", required),
+      min: helpers.withMessage(
+        "Password cannot be less than eight characters",
+        minLength(8)
+      ),
+      $autoDirty: true,
+    },
+    newPassword: {
+      required: helpers.withMessage("Please enter a password", required),
+      min: helpers.withMessage(
+        "Password cannot be less than eight characters",
+        minLength(8)
+      ),
+      mustNotEqual: helpers.withMessage(
+        "Old and New password cannot be the same",
+        mustNotEqual
+      ),
+      $autoDirty: true,
+    },
+    confirmPassword: {
+      required: helpers.withMessage("Please confirm password", required),
+      min: helpers.withMessage(
+        "Password cannot be less than eight characters",
+        minLength(8)
+      ),
+      sameAs: helpers.withMessage("Passwords do not match", valueIsSameAs),
+      $autoDirty: true,
+    },
+  };
 });
 const v$ = useVuelidate(rules, state);
 const isSuccess = ref(false);

@@ -19,7 +19,7 @@ const state = reactive({
   email: "",
   password: "",
   confirmPassword: "",
-  isTerms: false
+  isTerms: false,
 });
 
 const valueIsSameAs = (value) => {
@@ -28,46 +28,44 @@ const valueIsSameAs = (value) => {
 const mustBeTrue = (value) => {
   return value === true;
 };
-const rules = computed(()=>{
-  return(
-    {
-  firstname: {
-    required: helpers.withMessage("Please enter a name", required),
-    min: helpers.withMessage("Please enter a valid name", minLength(3)),
-    $autoDirty: true
-  },
-  lastname: {
-    required: helpers.withMessage("Please enter a name", required),
-    min: helpers.withMessage("Please enter a valid name", minLength(3)),
-    $autoDirty: true
-  },
-  email: {
-    required: helpers.withMessage("Please enter a valid email", required),
-    email: helpers.withMessage("Please enter a valid email", email),
-    $autoDirty: true
-  },
-  password: {
-    required: helpers.withMessage("Please enter a password", required),
-    min: helpers.withMessage(
-      "Password cannot be less than eight characters",
-      minLength(8)
-    ),
-    $autoDirty: true
-  },
-  confirmPassword: {
-    required: helpers.withMessage("Please confirm password", required),
-    min: helpers.withMessage(
-      "Password cannot be less than eight characters",
-      minLength(8)
-    ),
-    sameAs: helpers.withMessage("Passwords do not match", valueIsSameAs),
-    $autoDirty: true
-  },
-  isTerms:{
-    mustBeTrue: helpers.withMessage("Please accept the terms", mustBeTrue),
-  }
-}
-  )
+const rules = computed(() => {
+  return {
+    firstname: {
+      required: helpers.withMessage("Please enter a name", required),
+      min: helpers.withMessage("Please enter a valid name", minLength(3)),
+      $autoDirty: true,
+    },
+    lastname: {
+      required: helpers.withMessage("Please enter a name", required),
+      min: helpers.withMessage("Please enter a valid name", minLength(3)),
+      $autoDirty: true,
+    },
+    email: {
+      required: helpers.withMessage("Please enter a valid email", required),
+      email: helpers.withMessage("Please enter a valid email", email),
+      $autoDirty: true,
+    },
+    password: {
+      required: helpers.withMessage("Please enter a password", required),
+      min: helpers.withMessage(
+        "Password cannot be less than eight characters",
+        minLength(8)
+      ),
+      $autoDirty: true,
+    },
+    confirmPassword: {
+      required: helpers.withMessage("Please confirm password", required),
+      min: helpers.withMessage(
+        "Password cannot be less than eight characters",
+        minLength(8)
+      ),
+      sameAs: helpers.withMessage("Passwords do not match", valueIsSameAs),
+      $autoDirty: true,
+    },
+    isTerms: {
+      mustBeTrue: helpers.withMessage("Please accept the terms", mustBeTrue),
+    },
+  };
 });
 const v$ = useVuelidate(rules, state);
 
@@ -330,7 +328,6 @@ const submitForm = async () => {
                   >terms and conditions</span
                 >
               </h4>
-          
             </div>
             <div
               class="text-red-500 text-[13px]"
@@ -339,7 +336,6 @@ const submitForm = async () => {
             >
               <div>{{ error.$message }}</div>
             </div>
-           
           </div>
           <button
             @click="submitForm"
