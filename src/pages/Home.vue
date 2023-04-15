@@ -12,7 +12,7 @@ const bgImage = `bg-[url(${DashImg})] `;
 <template>
   <div class="w-full px-6 sm:px-10 mt-[3rem]">
     <div
-      class="w-full h-[250px] flex flex-col bg-dark border-0 border-primary rounded-xl p-8 shadow bg-[50%] bg-right bg-no-repeat"
+      class="w-full h-[19.5rem] xs:h-[15.8rem] flex flex-col bg-dark border-0 border-primary rounded-xl p-8 shadow bg-[50%] bg-right bg-no-repeat"
       :class="bgImage"
     >
       <h4 class="text-2xl text-light font-semibold">
@@ -20,15 +20,15 @@ const bgImage = `bg-[url(${DashImg})] `;
       </h4>
       <p class="text-light mt-4">What would you like to do today?</p>
 
-      <div class="flex items-center mt-auto">
+      <div class="flex flex-col xs:flex-row sm:items-center mt-auto">
         <RouterLink
           to="/settings"
-          class="p-3 border border-primary rounded-xl bg-dark text-primary min-w-[100px] btn-style"
+          class="mb-4 xs:mb-0 p-3 text-sm xs:text-base border border-primary rounded-xl bg-dark text-primary xs:min-w-[100px] text-center btn-style"
         >
           Update Profile
         </RouterLink>
         <button
-          class="p-3 bg-primary text-light rounded-xl min-w-[150px] ml-4 capitalize btn-style"
+          class="p-3 bg-primary text-sm xs:text-base text-light rounded-xl xs:min-w-[150px] xs:ml-4 capitalize btn-style"
         >
           Add a new budget plan
         </button>
@@ -36,7 +36,7 @@ const bgImage = `bg-[url(${DashImg})] `;
     </div>
   </div>
   <div class="w-full px-6 sm:px-10 mt-[3rem] pb-[3rem]">
-    <div class="w-full grid grid-cols-3 gap-[1.5rem]">
+    <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.5rem]">
       <ActionCard title="Budget" subTitle="Add New Budget Plan" />
       <ActionCard title="Transactions" subTitle="Add New Transaction" />
       <ActionCard title="Card" subTitle="Add Card to track" />
@@ -49,10 +49,9 @@ const bgImage = `bg-[url(${DashImg})] `;
       <ActionCard title="Subscriptions" subTitle="Add New Subscriptions" />
       <div>
         <ReportsChart
-          :data="{
-            labels: ['Savings', 'Transaction'],
-            datasets: [{ data: [40, 20] }],
-          }"
+        :labels="['Savings', 'Debt']"
+        legendLabel="Asset Ratio"
+        :data=" [0, 0]"
         />
       </div>
     </div>

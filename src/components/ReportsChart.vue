@@ -6,22 +6,30 @@ import {
   Legend,
   BarElement,
   CategoryScale,
-  LinearScale,
+  LinearScale
 } from "chart.js";
 import { Bar } from "vue-chartjs";
 
 ChartJS.register(
   CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
+   LinearScale,
+    BarElement,
+     Title, 
+     Tooltip, 
+     Legend
 );
 
 const props = defineProps({
   data: {
-    type: Object,
+    type: Array,
+    required: true,
+  },
+  labels: {
+    type: Array,
+    required: true,
+  },
+  legendLabel: {
+    type: String,
     required: true,
   },
 });
@@ -29,7 +37,10 @@ const options = {
   responsive: true,
 };
 const chartData = {
-  ...props.data,
+ labels: props.labels,
+ datasets:[{
+  data: props.data,
+  label: props.legendLabel,
   fill: {
     target: "origin",
     above: "rgba(204, 204, 204, 0.1)",
@@ -38,11 +49,17 @@ const chartData = {
   pointHoverBackgroundColor: "#fff",
   pointHoverBorderColor: "#000",
   pointHoverBorderWidth: 4,
-  borderColor: "#000",
+  borderColor: "#D65A31",
   backgroundColor: "fff",
   borderWidth: 1,
+ }]
+
 };
+
 </script>
 <template>
-  <Bar :data="props.data" :options="options" />
+  <div class="flex w-full h-full items-center min-h-[300px]">
+    <Bar id="report-chart" style="position: relative;" :data="chartData" :options="options" />
+  </div>
+ 
 </template>
