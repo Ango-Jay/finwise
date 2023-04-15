@@ -36,7 +36,9 @@ const bgImage = `bg-[url(${DashImg})] `;
     </div>
   </div>
   <div class="w-full px-6 sm:px-10 mt-[3rem] pb-[3rem]">
-    <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.5rem]">
+    <div
+      class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.5rem]"
+    >
       <ActionCard title="Budget" subTitle="Add New Budget Plan" />
       <ActionCard title="Transactions" subTitle="Add New Transaction" />
       <ActionCard title="Card" subTitle="Add Card to track" />
@@ -49,9 +51,9 @@ const bgImage = `bg-[url(${DashImg})] `;
       <ActionCard title="Subscriptions" subTitle="Add New Subscriptions" />
       <div>
         <ReportsChart
-        :labels="['Savings', 'Debt']"
-        legendLabel="Asset Ratio"
-        :data=" [0, 0]"
+          :labels="['Savings', 'Debt']"
+          legendLabel="Asset Ratio"
+          :data="[0, 0]"
         />
       </div>
     </div>
