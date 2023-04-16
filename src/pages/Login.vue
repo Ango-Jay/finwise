@@ -134,7 +134,7 @@ const handleLogin = async () => {
     >
       <div class="flex items-center mb-4">
         <div
-          class="w-full flex justify-center items-center shrink-0 grow-0 w-[40px] min-w-[40px] h-[40px]"
+          class="flex justify-center items-center shrink-0 grow-0 w-[40px] min-w-[40px] h-[40px]"
         >
           <img class="w-full h-full  rounded-full object-contain" :src="Logo" alt="logo" />
         </div>
