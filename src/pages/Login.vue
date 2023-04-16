@@ -134,9 +134,9 @@ const handleLogin = async () => {
     >
       <div class="flex items-center mb-4">
         <div
-          class="w-full flex justify-center items-center w-[40px] min-w-[40px] h-[40px]"
+          class="w-full flex justify-center items-center shrink-0 grow-0 w-[40px] min-w-[40px] h-[40px]"
         >
-          <img class="w-full h-full" :src="Logo" alt="logo" />
+          <img class="w-full h-full  rounded-full object-contain" :src="Logo" alt="logo" />
         </div>
         <h2 class="text-primary text-2xl font-semibold ml-2">FinWise</h2>
       </div>
