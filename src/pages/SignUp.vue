@@ -109,7 +109,6 @@ const submitForm = async () => {
         router.push("/");
       }, 3000);
     } catch (error) {
-      console.log(error);
       snackbar.add({
         type: "error",
         text: "Sorry an error occured",

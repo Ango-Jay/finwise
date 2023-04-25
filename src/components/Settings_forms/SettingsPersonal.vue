@@ -66,7 +66,6 @@ const imageSrc = ref("");
 
 watchEffect(() => {
   if (currentUser.value?.image) {
-    console.log("YTROERKJTG");
     mainImgSrc.value = URL.createObjectURL(currentUser.value.image);
   }
   if (currentUser.value?.image && !profileImage.value.length) {

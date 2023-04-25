@@ -122,7 +122,6 @@ const handleChangePassword = async () => {
           isLoading.value = false;
         }
       } catch (error) {
-        console.log(error);
         snackbar.add({
           type: "error",
           text: "Something went wrong",

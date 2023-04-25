@@ -1,7 +1,7 @@
 <script setup>
 import Tabs from "../components/Tabs/index.vue";
-import PersonalInformation from "../components/Forms/SettingsPersonal.vue";
-import PasswordForm from "../components/Forms/SettingsPassword.vue";
+import PersonalInformation from "../components/Settings_forms/SettingsPersonal.vue";
+import PasswordForm from "../components/Settings_forms/SettingsPassword.vue";
 
 const tabList = ["Profile", "Password"];
 </script>

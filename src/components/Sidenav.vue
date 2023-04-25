@@ -45,6 +45,7 @@ const handleLogout = () => {
     name: "login",
   });
 };
+
 const sections = [
   {
     name: "home",
@@ -130,7 +131,7 @@ const sections = [
           </RouterLink>
           <div
             class="absolute w-full h-[50px] top-0 left-0 px-6 z-[4] bg-primary rounded-2xl opacity-0 group-hover:opacity-100 hover:opacity-100"
-            :class="{ 'opacity-100': props.active === section.name }"
+            :class="{ 'opacity-100': props.active.includes(section.name) }"
           ></div>
         </div>
       </div>

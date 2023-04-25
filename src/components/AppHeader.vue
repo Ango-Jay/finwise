@@ -28,7 +28,6 @@ watchEffect(() => {
 watchEffect(() => {
   if (Object.keys(currentUser.value).length) {
     store.updateUser(currentUser.value);
-    console.log("REPEAT");
   }
 });
 </script>
