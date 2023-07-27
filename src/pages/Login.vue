@@ -136,7 +136,11 @@ const handleLogin = async () => {
         <div
           class="flex justify-center items-center shrink-0 grow-0 w-[40px] min-w-[40px] h-[40px]"
         >
-          <img class="w-full h-full  rounded-full object-contain" :src="Logo" alt="logo" />
+          <img
+            class="w-full h-full rounded-full object-contain"
+            :src="Logo"
+            alt="logo"
+          />
         </div>
         <h2 class="text-primary text-2xl font-semibold ml-2">FinWise</h2>
       </div>
@@ -150,92 +154,91 @@ const handleLogin = async () => {
         </h1>
         <div class="border-t-3 border-primary w-[200px] rounded-lg"></div>
       </div>
-<form
-@submit.prevent="handleLogin"
->
-      <div class="w-full mt-4 sm:w-[400px]">
-        <div class="my-4 flex flex-col relative">
-          <label
-            class="text-light font-bold mb-2 uppercase text-[13px]"
-            for="email"
-            >Email</label
-          >
-          <input
-            name="email"
-            class="bg-dark appearance-none p-4 rounded-2xl text-light"
-            type="email"
-            v-model="state.email"
-          />
-          <div
-            class="text-red-500 text-[13px]"
-            v-for="error of v$.email.$errors"
-            :key="error.$uid"
-          >
-            <div>{{ error.$message }}</div>
+      <form @submit.prevent="handleLogin">
+        <div class="w-full mt-4 sm:w-[400px]">
+          <div class="my-4 flex flex-col relative">
+            <label
+              class="text-light font-bold mb-2 uppercase text-[13px]"
+              for="email"
+              >Email</label
+            >
+            <input
+              name="email"
+              class="bg-dark appearance-none p-4 rounded-2xl text-light"
+              type="email"
+              v-model="state.email"
+            />
+            <div
+              class="text-red-500 text-[13px]"
+              v-for="error of v$.email.$errors"
+              :key="error.$uid"
+            >
+              <div>{{ error.$message }}</div>
+            </div>
           </div>
-        </div>
-        <div class="my-4 flex flex-col relative">
-          <label
-            class="text-light font-semibold mb-2 uppercase text-[13px]"
-            for="password"
-            >Password</label
-          >
-          <a href="." class="absolute top-0 right-0 text-[13px] text-primary"
-            >forgot password?</a
-          >
-          <input
-            name="password"
-            class="bg-dark appearance-none p-4 rounded-2xl text-light"
-            :type="togglePasswordInputType"
-            v-model="state.password"
-          />
-          <div
-            class="text-red-500 text-[13px]"
-            v-for="error of v$.password.$errors"
-            :key="error.$uid"
-          >
-            <div>{{ error.$message }}</div>
+          <div class="my-4 flex flex-col relative">
+            <label
+              class="text-light font-semibold mb-2 uppercase text-[13px]"
+              for="password"
+              >Password</label
+            >
+            <a href="." class="absolute top-0 right-0 text-[13px] text-primary"
+              >forgot password?</a
+            >
+            <input
+              name="password"
+              class="bg-dark appearance-none p-4 rounded-2xl text-light"
+              :type="togglePasswordInputType"
+              v-model="state.password"
+            />
+            <div
+              class="text-red-500 text-[13px]"
+              v-for="error of v$.password.$errors"
+              :key="error.$uid"
+            >
+              <div>{{ error.$message }}</div>
+            </div>
+            <button
+              type="button"
+              @click="showPassword = !showPassword"
+              class="absolute flex right-4 top-[63%] translate-y-[-50%] w-[25px] h-[20px] fill-light"
+            >
+              <inline-svg
+                :src="Eye"
+                v-if="!showPassword"
+                class="text-light"
+                width="20"
+                height="20"
+                aria-label="password show"
+              ></inline-svg>
+              <inline-svg
+                :src="EyeSlash"
+                v-if="showPassword"
+                class="text-light"
+                width="20"
+                height="20"
+                aria-label="password hide"
+              ></inline-svg>
+            </button>
           </div>
-          <button
-            type="button"
-            @click="showPassword = !showPassword"
-            class="absolute flex right-4 top-[63%] translate-y-[-50%] w-[25px] h-[20px] fill-light"
-          >
-            <inline-svg
-              :src="Eye"
-              v-if="!showPassword"
-              class="text-light"
-              width="20"
-              height="20"
-              aria-label="password show"
-            ></inline-svg>
-            <inline-svg
-              :src="EyeSlash"
-              v-if="showPassword"
-              class="text-light"
-              width="20"
-              height="20"
-              aria-label="password hide"
-            ></inline-svg>
-          </button>
-        </div>
 
-        <button
-        type="submit"
-        
-          class="flex justify-center items-center py-4 bg-primary text-white font-semibold w-full rounded-2xl mt-8"
-        >
-          <Spinner :isLoading="isLoading" />
-          Login
-        </button>
-        <div class="text-light mt-8 text-center">
-          <p>
-            Don&apos;t have an account?
-            <RouterLink to="/signup" class="text-primary">Sign up!</RouterLink>
-          </p>
+          <button
+            type="submit"
+            class="flex justify-center items-center py-4 bg-primary text-white font-semibold w-full rounded-2xl mt-8"
+          >
+            <Spinner :isLoading="isLoading" />
+            Login
+          </button>
+          <div class="text-light mt-8 text-center">
+            <p>
+              Don&apos;t have an account?
+              <RouterLink to="/signup" class="text-primary"
+                >Sign up!</RouterLink
+              >
+            </p>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
     </div>
   </div>
 </template>

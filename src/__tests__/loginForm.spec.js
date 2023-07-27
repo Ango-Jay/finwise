@@ -1,12 +1,12 @@
-import { describe, it, expect } from 'vitest';
-import {render, fireEvent, screen} from '@testing-library/vue'
-import LoginVue from '../pages/Login.vue';
+import { describe, it, expect } from "vitest";
+import { render, fireEvent, screen } from "@testing-library/vue";
+import LoginVue from "../pages/Login.vue";
 
-describe('Login form', () => {
-  it('should have an email field', () => {
-   render(LoginVue, {props:{}});
-   const emailInput = screen.getByRole('textbox');
-   expect(emailInput).toBeDefined();
+describe("Login form", () => {
+  it("should have an email field", () => {
+    render(LoginVue, { props: {} });
+    const emailInput = screen.getByRole("textbox");
+    expect(emailInput).toBeDefined();
   });
 
   // it('should have a password field', async() => {

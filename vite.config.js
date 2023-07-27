@@ -6,9 +6,9 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   plugins: [vue()],
   test: {
-global:true,
-environment:"jsdom",
-includeSource: ["src/**/*.{js,vue}"],
-clearMocks:true
+    global: true,
+    environment: "jsdom",
+    includeSource: ["src/**/*.{js,vue}"],
+    clearMocks: true,
   },
 });

@@ -28,7 +28,7 @@ const bgImage = `bg-[url(${DashImg})] `;
           Update Profile
         </RouterLink>
         <RouterLink
-        to="/budget/create"
+          to="/budget/create"
           class="p-3 bg-primary text-sm xs:text-base text-light rounded-xl xs:min-w-[150px] xs:ml-4 capitalize btn-style"
         >
           Add a new budget plan

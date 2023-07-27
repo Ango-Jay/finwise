@@ -1,5 +1,3 @@
 <template>
-    <div class="text-light">
-        jfkf
-    </div>
+  <div class="text-light">jfkf</div>
 </template>
