@@ -81,7 +81,7 @@ watchEffect(()=>{
                   aria-label="budget"
                 ></inline-svg>
       </span>
-      Budget Details <span class="font-normal">- Set new plan Information</span>
+      Budget Details <span class="font-normal ml-1">- Set new plan Information</span>
     </h2>
     <div class="border-t border-light w-full mt-4"></div>
     <div class="w-full mt-[3rem] px-6">

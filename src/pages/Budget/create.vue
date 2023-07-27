@@ -2,7 +2,15 @@
 import ArrowLeft from "../../assets/icon/arrow-left-solid.svg"
 import Image1 from "../../assets/img/budget-1.svg"
 import BudgetDetails from "../../components/CreateBudget_forms/BudgetInitial.vue"
+import { ref } from "vue";
 
+const stagesCompleted = ref([])
+const handleCompleted = (stage)=>{
+    stagesCompleted.value = [
+        ...stagesCompleted.value,
+        stage
+    ]
+}
 </script>
 
 <template>

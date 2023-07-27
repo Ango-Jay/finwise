@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test:unit": "vitest --environment jsdom"
   },
   "dependencies": {
     "@vuelidate/core": "^2.0.2",
@@ -27,11 +28,15 @@
     "vue3-snackbar": "^2.1.7"
   },
   "devDependencies": {
+    "@testing-library/vue": "^7.0.0",
     "@vitejs/plugin-vue": "^4.1.0",
+    "@vue/test-utils": "^2.4.1",
     "autoprefixer": "^10.4.14",
+    "jsdom": "^22.1.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.7",
     "tailwindcss": "^3.3.1",
-    "vite": "^4.2.0"
+    "vite": "^4.2.0",
+    "vitest": "^0.33.0"
   }
 }

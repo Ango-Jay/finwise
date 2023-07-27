@@ -150,7 +150,9 @@ const handleLogin = async () => {
         </h1>
         <div class="border-t-3 border-primary w-[200px] rounded-lg"></div>
       </div>
-
+<form
+@submit.prevent="handleLogin"
+>
       <div class="w-full mt-4 sm:w-[400px]">
         <div class="my-4 flex flex-col relative">
           <label
@@ -219,7 +221,8 @@ const handleLogin = async () => {
         </div>
 
         <button
-          @click="handleLogin"
+        type="submit"
+        
           class="flex justify-center items-center py-4 bg-primary text-white font-semibold w-full rounded-2xl mt-8"
         >
           <Spinner :isLoading="isLoading" />
@@ -232,6 +235,7 @@ const handleLogin = async () => {
           </p>
         </div>
       </div>
+    </form>
     </div>
   </div>
 </template>
